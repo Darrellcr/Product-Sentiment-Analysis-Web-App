@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+{% block title %}Home Page{% endblock title %}
+
+
+{% block content %}
+<div>
+    <form action="{{ url_for('submit') }}" method="POST">
+        <label for="url">Tokopedia URL:</label>
+        <input type="text" name="url" id="url">
+    </form>
+</div>
+{% endblock content %}
