@@ -15,7 +15,9 @@ app = Flask(__name__)
 def index() -> str:
     return render_template('index.html')
 
-
+@app.get('/sentiment')
+def sentiment() -> str:
+    return render_template('sentiment.html')
 @app.post('/submit')
 def submit() -> Response:
     print(request.form['url'])
