@@ -5,9 +5,9 @@
 {% block content %}
 
 <div>
-    <div class="flex flex-wrap">
+    <div class="flex flex-wrap max-w-full">
         <!-- bagian kiri -->
-        <div class="w-7/12 self-center ps-36 pt-16">
+        <div class="w-7/12 self-center ps-36 pt-16 min-h-[calc(100vh-5rem)]">
             <form action="{{ url_for('submit') }}" method="POST">
                 <img src="{{url_for('static', filename='img/tokopedia_logo.png')}}" />
                 <h1 class="font-semibold text-primary text-5xl mt-10">
@@ -17,11 +17,15 @@
                     This website allows you to discover the sentiment behind product 
                     <span class="block mt-2">reviews from previous customers.</span>
                 </p>
-                <input type="text" 
-                class="bg-secondary mt-7 rounded-lg h-12 w-8/12 text-secondarytxt px-4 py-2 
-                        focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent 
-                        focus:ring-opacity-50 placeholder-secondarytxt placeholder-opacity-55"
-                placeholder="insert tokopedia product url here...">
+                <div class="relative mt-7">
+                    <input type="text" 
+                            class="bg-secondary rounded-lg h-12 w-8/12 text-secondarytxt px-4 py-2 
+                                    focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent 
+                                    focus:ring-opacity-50 placeholder-secondarytxt placeholder-opacity-55
+                                    pl-11"
+                            placeholder="insert tokopedia product url here...">
+                    <i class="absolute inset-y-0 left-0 flex items-center pl-4 text-secondarytxt opacity-55 fas fa-search"></i>
+                </div>
 
                 <button class="block bg-primary text-white rounded-lg mt-8 w-28 h-10 hover:opacity-85">
                     Analyze
@@ -30,9 +34,9 @@
         </div>
 
         <!-- bagian kanan -->
-         <div class="w-5/12 self-center h-full">
-            <img src="{{url_for('static', filename='img/path.png')}}" class="absolute -top-20 right-30 -z-10 scale-125 h-full" />
-            <img src="{{url_for('static', filename='img/hero.png')}}"class="mt-16 z-10"/>
+         <div class="w-5/12 self-center h-full relative overflow-hidden min-h-[calc(100vh-5rem)]">
+            <img src="{{url_for('static', filename='img/path.png')}}" class="absolute -top-0 right-0 scale-120 -z-10 max-w-full min-h-full object-cover" />
+            <img src="{{url_for('static', filename='img/hero.png')}}"class="mt-24 ms-8 z-10"/>
          </div>
 
     </div>
