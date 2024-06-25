@@ -7,6 +7,7 @@ from flask import (
     request
 )
 from werkzeug.wrappers import Response
+from scrape_tokped import scrape_tokopedia
 
 app = Flask(__name__)
 
@@ -18,11 +19,12 @@ def index() -> str:
 @app.get('/sentiment')
 def sentiment() -> str:
     return render_template('sentiment.html')
+
 @app.post('/submit')
 def submit() -> Response:
-    print(request.form['url'])
-    return redirect(url_for('index'))
-
+    url = request.form['url']
+    reviews = scrape_tokopedia(url)
+    return redirect(url_for('sentiment', reviews=reviews.to_html()))
 
 @app.errorhandler(404)
 def page_not_found(e) -> Tuple[str, int]:
