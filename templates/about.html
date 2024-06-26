@@ -1,0 +1,80 @@
+{% extends 'layout.html' %}
+{% block title %}Home Page{% endblock title %}
+
+
+{% block content %}
+
+<div class="flex flex-wrap max-w-full">
+    <div class="ps-36 pt-16">
+        <img src="{{url_for('static', filename='img/tokopedia_logo.png')}}" />
+        <h1 class="font-semibold text-primary text-5xl mt-10">
+            About        
+        </h1>
+        <p class="mt-5 text-l text-darktxt">
+            What we used for the Tokopedia Sentiment Analysis Web App?
+        </p>
+        <div class="relative mt-5 hover:text-white">
+            <a href="">
+                <button class="outline outline-2 rounded w-40 h-10 font-semibold text-black outline-black text-sm pl-7 hover:bg-black hover:text-white">
+                    <i class="fa-brands fa-github text-2xl absolute inset-y-0 left-0 flex items-center pl-3"></i>
+                    link to our repo
+                </button>
+            </a>
+        </div>
+        
+        <section class="NLP_model_section">
+            <h3 class="mt-16 font-medium text-2xl text-darktxt">
+                NLP Model
+            </h3>
+            <p class="mt-7 text-l text-darktxt">
+                BERT transformer model developed by HuggingFace.
+            </p>
+            <p class="mt-7 text-l text-darktxt">
+                We employed the IndoBERT variant, which was trained on data from multiple sources :
+            </p>
+            <ol class="list-decimal text-darktxt ms-14 mt-5">
+                <li class="mt-2.5">Indonesian Wikipedia (74M words)</li>
+                <li class="mt-2.5">News articles from Kompas, Tempo (Tala et al., 2003), and Liputan6 (55M words total)</li>
+                <li class="mt-2.5">Indonesian Web Corpus (Medved and Suchomel, 2017) (90M words).</li>
+            </ol>
+            <p class="mt-7 text-l text-darktxt">
+                Did additional training and fine-tuning through our own labelled dataset containing 5764 data.
+            </p>
+            <p class="mt-7 text-l text-darktxt">
+                Developed using python.
+            </p>
+        </section>
+
+        <section class="Toped_scraping_mechanism">
+            <h3 class="mt-16 font-medium text-2xl text-darktxt">
+                Tokopedia Scraping Algorithm
+            </h3>
+            <p class="mt-7 text-l text-darktxt">
+                Selenium as browser automation
+            </p>
+            <p class="mt-7 text-l text-darktxt">
+                BeautifulSoup4 library for parsing HTML and extracting data from web pages.
+            </p>
+            <p class="mt-7 text-l text-darktxt">
+                Developed using python.
+            </p>
+        </section>
+
+        <section class="web_app mb-12">
+            <h3 class="mt-16 font-medium text-2xl text-darktxt">
+                Web Application
+            </h3>
+            <p class="mt-7 text-l text-darktxt">
+                HTML integrated using the Flask Framework
+            </p>
+            <p class="mt-7 text-l text-darktxt">
+                Employed the tailwind CSS Framework
+            </p>
+            <p class="mt-7 text-l text-darktxt">
+                Developed using python.
+            </p>
+        </section>
+
+    </div>
+</div>
+{% endblock content %}

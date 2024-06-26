@@ -17,5 +17,7 @@ build/
 /.idea
 /.vscode
 
+functions/nlp_models
+
 .env
 .flaskenv

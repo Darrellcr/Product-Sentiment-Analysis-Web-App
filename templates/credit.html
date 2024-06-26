@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+{% block title %}Home Page{% endblock title %}
+
+
+{% block content %}
+
+<div>
+    <div class="flex flex-wrap max-w-full">
+        <!-- bagian kiri -->
+        <div class="w-7/12 self-center ps-36 pt-16 min-h-[calc(100vh-5rem)]">
+            <img src="{{url_for('static', filename='img/tokopedia_logo.png')}}" />
+            <h1 class="font-semibold text-primary text-5xl mt-10">
+                Credits
+            </h1>
+            <p class="mt-5 text-l text-darktxt">
+                Tokopedia Sentiment Analysis Web App
+            </p>
+            <h3 class="mt-10 font-medium text-2xl text-darktxt">
+                Developer
+            </h3>
+            <ul class="list-disc ms-5 text-darktxt mt-5">
+                <li class="mt-2.5">Darrell Cornelius Rivaldo (C14210025)</li>
+                <li class="mt-2.5">Michael Adi Pratama (C14210016)</li>
+                <li class="mt-2.5">Nicholas Gunawan (C14210099)</li>
+                <li class="mt-2.5">Nico Samuelson (C14210017)</li>
+            </ul>
+        </div>
+
+        <!-- bagian kanan -->
+         <div class="w-5/12 self-center h-full relative overflow-hidden min-h-[calc(100vh-5rem)]">
+            <img src="{{url_for('static', filename='img/path.png')}}" class="absolute -top-0 right-0 scale-120 -z-10 max-w-full min-h-full object-cover" />
+            <img src="{{url_for('static', filename='img/hero_credit.png')}}"class="mt-44 ms-20 z-10"/>
+         </div>
+
+    </div>
+
+    <!-- <form action="{{ url_for('submit') }}" method="POST">
+        <label for="url">Tokopedia URL:</label>
+        <input type="text" name="url" id="url">
+    </form> -->
+</div>
+{% endblock content %}

@@ -58,11 +58,23 @@ def scrape_tokopedia(url) :
             break
         time.sleep(3)
 
-    print(f'Jumlah review : {len(reviews)}')
-    review_df = pd.DataFrame(reviews, columns=['review', 'rating'])
-    review_df.sort_values(by='rating', ascending=True, inplace=True)
+    # convert to dataframe
+    reviews = pd.DataFrame(reviews, columns=['review', 'rating'])
     
-    return review_df
+    return reviews
 
+# def main() :
+#     url = 'https://www.tokopedia.com/sneakersdept/sepatu-sneakers-unisex-reebok-bb-4000-ii-100033315-original-45-a0f9f?extParam=ivf%3Dfalse%26keyword%3Dreebok%26search_id%3D202406261126444FD811CE401E5C260302%26src%3Dsearch'
+#     reviews = scrape_tokopedia(url)
+#     print(len(reviews))
+    
+#     # check type
+#     print(type(reviews))
+
+#     # get first 5 reviews
+#     print(reviews[:5])
+
+# if __name__ == '__main__' :
+#     main()
     
 
