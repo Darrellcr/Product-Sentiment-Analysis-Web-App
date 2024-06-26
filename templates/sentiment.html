@@ -1,19 +1,13 @@
 {% extends 'layout.html' %} {% block title %}Home Page{% endblock title %} {%
 block content %}
-<!-- <!DOCTYPE html> -->
-<!-- <html lang="en"> -->
 
 <head>
     <title>Sentiment Analysis</title>
-    <!-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script> -->
 
     <style>
         .product-image {
-            width: 200px;
-            height: 200px;
+            max-width: 400px;
             object-fit: cover;
-            margin: 0 auto;
             margin-top: 20px;
         }
 
@@ -101,64 +95,32 @@ block content %}
 </head>
 
 <body class="bg-secondary-100">
-    <div class="max-w-6xl mx-auto bg-white p-6 rounded-lg shadow-lg mt-6">
-        <h1 class="text-2xl font-bold mb-6 text-center">Analysis Result</h1>
-
-        <div class="flex">
-            <!-- Left Section -->
-            <div class="w-1/2 text-center">
+    <div class="flex flex-row md:px-48 px-10 md:py-16 py-8 gap-8">
+        <div class="w-1/2">
+            <h1 class="text-2xl font-bold mb-6 text-primary text-5xl font-medium">Analysis Result</h1>
+            <div class="text-center">
                 <div class="mt-2 text-gray-700 text-left">
-                    <p>Product Name: iPhone 15 Pro Max Garansi Resmi</p>
-                    <p class="mt-1">Jumlah Review: 150</p>
+                    <p class="font-bold text-xl">{{ name }}</p>
+                    <p class="mt-1">{{ count }} reviews</p>
                 </div>
-                <img class="product-image mx-auto rounded-lg"
-                    src="https://cdn.eraspace.com/media/catalog/product/i/p/iphone_13_pro_sierra_blue_3_3.jpg"
+                <img class="product-image rounded-lg"
+                    src="{{ img }}"
                     alt="Product Image" />
             </div>
+        </div>
 
-            <!-- Right Section -->
-            <div class="w-1/2">
-                <div class="bar-container my-6">
-                    <h3 class="text-lg font-semibold">Barang</h3>
-                    <!-- <div class="bar mt-5">
-                        <div class="segment negative" style="width: 10%;" data-tooltip="Negative: 15 reviews"></div>
-                        <div class="segment neutral" style="width: 50%; left: 10%;" data-tooltip="Neutral: 75 reviews"></div>
-                        <div class="segment positive" style="width: 40%; left: 60%;" data-tooltip="Positive: 60 reviews"></div>
-                        <span class="percentage negative-percent">10%</span>
-                        <span class="percentage neutral-percent">50%</span>
-                        <span class="percentage positive-percent">40%</span>
-                    </div> -->
-                    <canvas id="barang"></canvas>
-                    <!-- <p class="text-sm text-center">Sentimen: Netral</p> -->
-                </div>
-                <div class="bar-container my-6">
-                    <h3 class="text-lg font-semibold">Pengiriman</h3>
-                    <!-- <div class="bar mt-5">
-                        <div class="segment negative" style="width: 20%;" data-tooltip="Negative: 30 reviews"></div>
-                        <div class="segment neutral" style="width: 40%; left: 20%;" data-tooltip="Neutral: 60 reviews"></div>
-                        <div class="segment positive" style="width: 40%; left: 60%;" data-tooltip="Positive: 60 reviews"></div>
-                        <span class="percentage negative-percent">20%</span>
-                        <span class="percentage neutral-percent">40%</span>
-                        <span class="percentage positive-percent">40%</span>
-                    </div> -->
-
-                    <canvas id="pengiriman"></canvas>
-                    <!-- <p class="text-sm text-center">Sentimen: Netral</p> -->
-                </div>
-                <div class="bar-container my-6">
-                    <h3 class="text-lg font-semibold">Pelayanan</h3>
-                    <!-- <div class="bar mt-5">
-                        <div class="segment negative" style="width: 30%;" data-tooltip="Negative: 45 reviews"></div>
-                        <div class="segment neutral" style="width: 20%; left: 30%;" data-tooltip="Neutral: 30 reviews"></div>
-                        <div class="segment positive" style="width: 50%; left: 50%;" data-tooltip="Positive: 75 reviews"></div>
-                        <span class="percentage negative-percent">30%</span>
-                        <span class="percentage neutral-percent">20%</span>
-                        <span class="percentage positive-percent">50%</span>
-                    </div> -->
-
-                    <canvas id="pelayanan"></canvas>
-                    <!-- <p class="text-sm text-center">Sentimen: Netral</p> -->
-                </div>
+        <div class="w-1/2">
+            <div class="bar-container my-6">
+                <h3 class="text-lg font-semibold">Barang</h3>
+                <canvas id="barang"></canvas>
+            </div>
+            <div class="bar-container my-6">
+                <h3 class="text-lg font-semibold">Pengiriman</h3>
+                <canvas id="pengiriman"></canvas>
+            </div>
+            <div class="bar-container my-6">
+                <h3 class="text-lg font-semibold">Pelayanan</h3>
+                <canvas id="pelayanan"></canvas>
             </div>
         </div>
     </div>
