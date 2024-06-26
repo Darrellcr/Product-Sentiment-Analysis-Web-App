@@ -42,7 +42,7 @@ def result() -> str:
 def submit() -> Response:
     url = request.form['url']
     try:
-        reviews = scrape_tokopedia(url)
+        product_name, img_src, reviews = scrape_tokopedia(url)
         results = get_aspect(reviews)
         results = get_sentiment(results)
     except:

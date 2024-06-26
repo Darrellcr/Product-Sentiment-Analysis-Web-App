@@ -15,6 +15,14 @@ def scrape_tokopedia(url) :
     time.sleep(5)
     soup = BeautifulSoup(driver.page_source, 'html.parser')
 
+    # product name
+    product_name = soup.find_all('h1', attrs={'data-testid' : 'lblPDPDetailProductName'})
+    product_name = product_name[0].text
+
+    # product image
+    img_src = soup.find_all('img', attrs={'data-testid' : 'PDPMainImage'})
+    img_src = img_src[0]['src']
+
     # go to review section
     all_review = soup.find_all('a', attrs={'data-testid' : 'btnViewAllFeedback'})
     link_all_review = all_review[0]['href']
@@ -61,20 +69,20 @@ def scrape_tokopedia(url) :
     # convert to dataframe
     reviews = pd.DataFrame(reviews, columns=['review', 'rating'])
     
-    return reviews
+    return product_name, img_src, reviews
 
-# def main() :
-#     url = 'https://www.tokopedia.com/sneakersdept/sepatu-sneakers-unisex-reebok-bb-4000-ii-100033315-original-45-a0f9f?extParam=ivf%3Dfalse%26keyword%3Dreebok%26search_id%3D202406261126444FD811CE401E5C260302%26src%3Dsearch'
-#     reviews = scrape_tokopedia(url)
-#     print(len(reviews))
+def main() :
+    url = 'https://www.tokopedia.com/sneakersdept/sepatu-sneakers-unisex-reebok-bb-4000-ii-100033315-original-45-a0f9f?extParam=ivf%3Dfalse%26keyword%3Dreebok%26search_id%3D202406261126444FD811CE401E5C260302%26src%3Dsearch'
+    product_name, img_src, reviews = scrape_tokopedia(url)
+    print(len(reviews))
     
-#     # check type
-#     print(type(reviews))
+    # check type
+    print(type(reviews))
 
-#     # get first 5 reviews
-#     print(reviews[:5])
+    # get first 5 reviews
+    print(reviews[:5])
 
-# if __name__ == '__main__' :
-#     main()
+if __name__ == '__main__' :
+    main()
     
 
