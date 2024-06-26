@@ -28,7 +28,7 @@ def get_sentiment(reviews_aspect : list) :
     num_added_tokens = tokenizer.add_special_tokens(special_tokens_dict)
 
     # Load pre-trained model with a classification head <- change this to your model path
-    model = AutoModelForSequenceClassification.from_pretrained("/Users/nicholasgunawan/Documents/kuliah (local)/semester 6/NLP/Proyek Akhir/Product-Sentiment-Analysis-Web-App/functions/nlp_models/indoBERT sentiment classifier", num_labels=3)
+    model = AutoModelForSequenceClassification.from_pretrained(os.environ.get("INDOBERT_ABSA_PATH"), num_labels=3)
     model.resize_token_embeddings(len(tokenizer))
     
     # check if GPU is available

@@ -1,16 +1,13 @@
-{% extends 'layout.html' %}
-{% block title %}Home Page{% endblock title %}
+{% extends 'layout.html' %} {% block title %}Home Page{% endblock title %} {%
+block content %}
+<!-- <!DOCTYPE html> -->
+<!-- <html lang="en"> -->
 
-
-{% block content %}
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sentiment Analysis</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script> -->
+
     <style>
         .product-image {
             width: 200px;
@@ -19,61 +16,77 @@
             margin: 0 auto;
             margin-top: 20px;
         }
+
         .header-bg {
             background-color: #f9dcc5;
         }
+
         .header-bg:hover {
             background-color: #ffdab9;
         }
+
         .header-bg a {
             color: black;
         }
+
         .header-bg a:hover {
             font-size: 1.1rem;
             font-weight: bold;
         }
-        .bar-container {
+
+        /* .bar-container {
             margin-bottom: 2rem;
-        }
-        .bar-container h3 {
+        } */
+
+        /* .bar-container h3 {
             margin-bottom: 0.5rem;
-        }
-        .bar {
+        } */
+
+        /* .bar {
             display: flex;
             height: 20px;
             background-color: #d3d3d3;
             margin-bottom: 0.5rem;
             position: relative;
         }
+
         .bar .segment {
             height: 100%;
             position: absolute;
             cursor: pointer;
         }
+
         .bar .positive {
             background-color: #34d399;
         }
+
         .bar .neutral {
-            background-color: #D3D3D3;
+            background-color: #d3d3d3;
         }
+
         .bar .negative {
             background-color: #ff2c2c;
         }
+
         .bar .percentage {
             position: absolute;
             top: -20px;
             font-size: 12px;
             white-space: nowrap;
         }
+
         .bar-container .positive-percent {
             left: 80%;
         }
+
         .bar-container .neutral-percent {
             left: 40%;
         }
+
         .bar-container .negative-percent {
             left: 5%;
-        }
+        } */
+
         .tooltip {
             display: none;
             position: absolute;
@@ -86,11 +99,11 @@
         }
     </style>
 </head>
-<body class="bg-secondary-100 ">
 
+<body class="bg-secondary-100">
     <div class="max-w-6xl mx-auto bg-white p-6 rounded-lg shadow-lg mt-6">
         <h1 class="text-2xl font-bold mb-6 text-center">Analysis Result</h1>
-        
+
         <div class="flex">
             <!-- Left Section -->
             <div class="w-1/2 text-center">
@@ -98,80 +111,211 @@
                     <p>Product Name: iPhone 15 Pro Max Garansi Resmi</p>
                     <p class="mt-1">Jumlah Review: 150</p>
                 </div>
-                <img class="product-image mx-auto rounded-lg" src="https://cdn.eraspace.com/media/catalog/product/i/p/iphone_13_pro_sierra_blue_3_3.jpg" alt="Product Image">
+                <img class="product-image mx-auto rounded-lg"
+                    src="https://cdn.eraspace.com/media/catalog/product/i/p/iphone_13_pro_sierra_blue_3_3.jpg"
+                    alt="Product Image" />
             </div>
 
             <!-- Right Section -->
             <div class="w-1/2">
-                <div class="bar-container mb-3 mt-3">
+                <div class="bar-container my-6">
                     <h3 class="text-lg font-semibold">Barang</h3>
-                    <div class="bar mt-5">
+                    <!-- <div class="bar mt-5">
                         <div class="segment negative" style="width: 10%;" data-tooltip="Negative: 15 reviews"></div>
                         <div class="segment neutral" style="width: 50%; left: 10%;" data-tooltip="Neutral: 75 reviews"></div>
                         <div class="segment positive" style="width: 40%; left: 60%;" data-tooltip="Positive: 60 reviews"></div>
                         <span class="percentage negative-percent">10%</span>
                         <span class="percentage neutral-percent">50%</span>
                         <span class="percentage positive-percent">40%</span>
-                    </div>
-                    <p class="text-sm text-center">Sentimen: Netral</p>
+                    </div> -->
+                    <canvas id="barang"></canvas>
+                    <!-- <p class="text-sm text-center">Sentimen: Netral</p> -->
                 </div>
-                <div class="bar-container mb-3 mt-3">
+                <div class="bar-container my-6">
                     <h3 class="text-lg font-semibold">Pengiriman</h3>
-                    <div class="bar mt-5">
+                    <!-- <div class="bar mt-5">
                         <div class="segment negative" style="width: 20%;" data-tooltip="Negative: 30 reviews"></div>
                         <div class="segment neutral" style="width: 40%; left: 20%;" data-tooltip="Neutral: 60 reviews"></div>
                         <div class="segment positive" style="width: 40%; left: 60%;" data-tooltip="Positive: 60 reviews"></div>
                         <span class="percentage negative-percent">20%</span>
                         <span class="percentage neutral-percent">40%</span>
                         <span class="percentage positive-percent">40%</span>
-                    </div>
-                    <p class="text-sm text-center">Sentimen: Netral</p>
+                    </div> -->
+
+                    <canvas id="pengiriman"></canvas>
+                    <!-- <p class="text-sm text-center">Sentimen: Netral</p> -->
                 </div>
-                <div class="bar-container mb-3 mt-3">
+                <div class="bar-container my-6">
                     <h3 class="text-lg font-semibold">Pelayanan</h3>
-                    <div class="bar mt-5">
+                    <!-- <div class="bar mt-5">
                         <div class="segment negative" style="width: 30%;" data-tooltip="Negative: 45 reviews"></div>
                         <div class="segment neutral" style="width: 20%; left: 30%;" data-tooltip="Neutral: 30 reviews"></div>
                         <div class="segment positive" style="width: 50%; left: 50%;" data-tooltip="Positive: 75 reviews"></div>
                         <span class="percentage negative-percent">30%</span>
                         <span class="percentage neutral-percent">20%</span>
                         <span class="percentage positive-percent">50%</span>
-                    </div>
-                    <p class="text-sm text-center">Sentimen: Netral</p>
+                    </div> -->
+
+                    <canvas id="pelayanan"></canvas>
+                    <!-- <p class="text-sm text-center">Sentimen: Netral</p> -->
                 </div>
             </div>
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <script>
-        document.querySelectorAll('.bar .segment').forEach(segment => {
-            segment.addEventListener('mouseover', function(event) {
-                let tooltip = document.createElement('div');
-                tooltip.className = 'tooltip';
-                tooltip.innerText = this.getAttribute('data-tooltip');
-                document.body.appendChild(tooltip);
-                let rect = this.getBoundingClientRect();
-                tooltip.style.left = rect.left + window.pageXOffset + 'px';
-                tooltip.style.top = rect.top + window.pageYOffset - tooltip.offsetHeight + 'px';
-                tooltip.style.display = 'block';
-            });
-            segment.addEventListener('mouseout', function() {
-                document.querySelectorAll('.tooltip').forEach(tooltip => tooltip.remove());
-            });
-        });
         tailwind.config = {
-          theme: {
-            extend: {
-              colors: {
-                'primary': '#42B549',
-                'secondary': '#EFEEE5',
-                'secondarytxt': '#838458',
-              }
-            }
-          }
-        }
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#42B549",
+                        secondary: "#EFEEE5",
+                        secondarytxt: "#838458",
+                    },
+                },
+            },
+        };
+
+        // let raw = JSON.parse("{{results | safe}}");
+        let barang = JSON.parse(`{{barang | safe}}`);
+        let pengiriman = JSON.parse(`{{pengiriman | safe}}`);
+        let pelayanan = JSON.parse(`{{pelayanan | safe}}`);
+        console.log(barang, pengiriman, pelayanan);
+
+        let ctxBarang = document.getElementById("barang").getContext("2d");
+        let ctxPengiriman = document.getElementById("pengiriman").getContext("2d");
+        let ctxPelayanan = document.getElementById("pelayanan").getContext("2d");
+
+        const config = {
+            indexAxis: 'y',
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false,
+                },
+            },
+            maintainAspectRatio: false,
+            scales: {
+                x: {
+                    stacked: true,
+                    grid: {
+                        display: false, // Hide x-axis ticks
+                    },
+                    // ticks: {
+                    //     display: false,
+                    // },
+                    borderColor: 'rgba(0, 0, 0, 0)',
+                    borderWidth: 0,
+                },
+                y: {
+                    stacked: true,
+                    grid: {
+                        display: false, // Hide x-axis grid lines
+                    },
+                    ticks: {
+                        display: false, // Hide x-axis ticks
+                    },
+                    borderColor: 'rgba(0, 0, 0, 0)',
+                    borderWidth: 0, //
+                }
+            },
+            legend: {
+                display: false,
+            },
+        };
+
+        let barangChart = new Chart(ctxBarang, {
+            type: "bar",
+            data: {
+                labels: ["Sentiment"],
+                datasets: [
+                    {
+                        label: "Positive",
+                        data: [barang.aspect.Positive ?? 0],
+                        backgroundColor: "#4bc769",
+                        barThickness: 30,
+                    },
+                    {
+                        label: "Neutral",
+                        data: [barang.aspect.Neutral ?? 0],
+                        backgroundColor: "#d8d8d8",
+                        barThickness: 30,
+                    },
+                    {
+                        label: "Negative",
+                        data: [barang.aspect.Negative ?? 0],
+                        backgroundColor: "#f37f33",
+                        barThickness: 30,
+                    },
+                ],
+            },
+            options: config
+        });
+
+        let pengirimanChart = new Chart(ctxPengiriman, {
+            type: "bar",
+            data: {
+                labels: ["Sentiment"],
+                datasets: [
+                    {
+                        label: "Positive",
+                        data: [pengiriman.aspect.Positive ?? 0],
+                        backgroundColor: "#4bc769",
+                        barThickness: 30,
+                    },
+                    {
+                        label: "Neutral",
+                        data: [pengiriman.aspect.Neutral ?? 0],
+                        backgroundColor: "#d8d8d8",
+                        barThickness: 30,
+                    },
+                    {
+                        label: "Negative",
+                        data: [pengiriman.aspect.Negative ?? 0],
+                        backgroundColor: "#f37f33",
+                        barThickness: 30,
+                    },
+                ],
+            },
+            options: config
+        });
+
+        let pelayananChart = new Chart(ctxPelayanan, {
+            type: "bar",
+            data: {
+                labels: ["Sentiment"],
+                datasets: [
+                    {
+                        label: "Positive",
+                        data: [pelayanan.aspect.Positive ?? 0],
+                        backgroundColor: "#4bc769",
+                        barThickness: 30,
+                    },
+                    {
+                        label: "Neutral",
+                        data: [pelayanan.aspect.Neutral ?? 0],
+                        backgroundColor: "#d8d8d8",
+                        barThickness: 30,
+                    },
+                    {
+                        label: "Negative",
+                        data: [pelayanan.aspect.Negative ?? 0],
+                        backgroundColor: "#f37f33",
+                        barThickness: 30,
+                    },
+                ],
+            },
+            options: config
+        });
+
+        barangChart.canvas.parentNode.style.height = '120px';
+        pengirimanChart.canvas.parentNode.style.height = '120px';
+        pelayananChart.canvas.parentNode.style.height = '120px';
+
     </script>
 </body>
-</html>
+<!-- </html> -->
 
 {% endblock content %}

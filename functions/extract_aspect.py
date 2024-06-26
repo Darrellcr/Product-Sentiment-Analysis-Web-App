@@ -47,7 +47,7 @@ def get_aspect(reviews : pd.DataFrame) :
     tokenizer = AutoTokenizer.from_pretrained("indolem/indobert-base-uncased")
 
     # load the model <- change this to your model path
-    model = AutoModelForSequenceClassification.from_pretrained("/Users/nicholasgunawan/Documents/kuliah (local)/semester 6/NLP/Proyek Akhir/Product-Sentiment-Analysis-Web-App/functions/nlp_models/indobert-aspect-extractor")
+    model = AutoModelForSequenceClassification.from_pretrained(os.environ.get("INDOBERT_ASPECT_PATH"))
 
     # check if GPU is available
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
