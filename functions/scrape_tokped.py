@@ -12,7 +12,7 @@ def scrape_tokopedia(url) :
     driver.get(url)
     # scroll to a unloaded element
     driver.execute_script("window.scrollBy(0, 2000)")
-    time.sleep(1)
+    time.sleep(5)
     soup = BeautifulSoup(driver.page_source, 'html.parser')
 
     # product name
@@ -28,7 +28,7 @@ def scrape_tokopedia(url) :
     link_all_review = all_review[0]['href']
     link_all_review = 'https://www.tokopedia.com' + link_all_review
     driver.get(link_all_review)
-    time.sleep(1)
+    time.sleep(5)
     soup = BeautifulSoup(driver.page_source, 'html.parser')
 
     # get number of pages
@@ -58,13 +58,13 @@ def scrape_tokopedia(url) :
                 rating = review.find('div', attrs={'data-testid' : 'icnStarRating'})['aria-label']
                 rating = rating.removeprefix('bintang ')
                 reviews.append([text_review, rating])
-        time.sleep(1)
+        time.sleep(5)
         # click next page  
         try :
             driver.find_element(By.CSS_SELECTOR, 'button[aria-label="Laman berikutnya"]').click()
         except :
             break
-        time.sleep(1)
+        time.sleep(5)
 
     # convert to dataframe
     reviews = pd.DataFrame(reviews, columns=['review', 'rating'])
