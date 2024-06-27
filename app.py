@@ -57,7 +57,6 @@ def submit() -> Response:
     data = data.replace(r'\n',' ', regex=True)
     data = data.replace(r'"','', regex=True)
     count = len(results)
-    results = data
     print(results)
     data = data.drop(['review'], axis=1, inplace=False)
     barang = data[data['aspect'] == 'barang'].groupby('sentiment').count().to_json(force_ascii=False)
@@ -65,7 +64,7 @@ def submit() -> Response:
     pelayanan = data[data['aspect'] == 'pelayanan'].groupby('sentiment').count().to_json(force_ascii=False)
 
     # results = json.dumps(results)
-    return render_template('sentiment.html', name=product_name, img=img_src, count=count, barang=barang, pengiriman=pengiriman, pelayanan=pelayanan, results=results.to_json(orient='records', force_ascii=False))
+    return render_template('sentiment.html', name=product_name, img=img_src, count=count, barang=barang, pengiriman=pengiriman, pelayanan=pelayanan, results=results)
 
 @app.errorhandler(404)
 def page_not_found(e) -> Tuple[str, int]:
